@@ -115,14 +115,11 @@ WSGI_APPLICATION = 'lh_web_interna.wsgi.application'
 DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
-        'NAME': 'pipatzo-db.cedocpfxfqhe.eu-north-1.rds.amazonaws.com:1521/ORCL',
+        'NAME': 'ORCL',
         'USER': 'pipatzo0',
         'PASSWORD': 'tedatzo777',
-        'TEST': {
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_test_tbls_tmp',
-        },
+        'HOST': 'pipatzo-db.cedocpfxfqhe.eu-north-1.rds.amazonaws.com',
+        'PORT': '1521',
         }
 }
 
