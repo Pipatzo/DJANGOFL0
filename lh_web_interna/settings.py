@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-sdnffk6btxso0g97fpd!l6f*g4@tn3k8yhc%i6^m^7!o(0$$&l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 # Configuración del backend de sesiones (por defecto, utiliza base de datos)
 # Puedes cambiar esto según tus necesidades, por ejemplo, usando sesión en memoria
@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'lh_web_interna.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+"""DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '192.168.1.88:1521/XE',
@@ -110,9 +110,9 @@ DATABASES = {
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
         }
-}
+}"""
 
-"""DATABASES = {
+DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'pipatzo-db.cedocpfxfqhe.eu-north-1.rds.amazonaws.com:1521/ORCL',
@@ -124,7 +124,7 @@ DATABASES = {
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
         }
-}"""
+}
 
 
 # Password validation
