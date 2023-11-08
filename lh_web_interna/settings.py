@@ -60,7 +60,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'tailwind',
-    'theme',
     'django_browser_reload',
     'django.contrib.humanize',
     
