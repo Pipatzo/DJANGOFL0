@@ -1,1 +1,1 @@
-web: gunicorn lh_web_interna.wsgi --log-file -
+web: python manage.py && gunicorn lh_web_interna.wsgi

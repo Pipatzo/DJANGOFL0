@@ -15,7 +15,7 @@ from googleapiclient.discovery import build
 from google.oauth2 import service_account
 from datetime import datetime, timedelta
 from django.shortcuts import render
-
+from django.http import HttpResponse,HttpResponseRedirect
 from apiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 
@@ -142,6 +142,13 @@ def employe_list(request):
             post2.save()
             messages.success(request, "Registro de Asistencia Existoso")
             return redirect('inicio')
+        elif request.method == 'POST':
+            # Verificar si se envió un formulario para cambiar el valor de la variable booleana
+
+            # Cambiar el valor de la variable booleana utilizando un switch (toggle)
+            mi_variable_booleana = not mi_variable_booleana
+            # Guardar el nuevo valor en la sesión
+            request.session['mi_variable_booleana'] = mi_variable_booleana
         else:
             messages.error(request, 'Error: No se puede crear un empleado con el mismo RUT que otro existente o registrar asistencia 2 veces o más el mismo día.')
 
@@ -150,19 +157,18 @@ def employe_list(request):
         form2 = AsistenciaForms(request.POST)
     
     tabla_asistencia = generar_tabla_asistencia_mes_actual()
-    """ elif request.method == 'POST':
-             # Verificar si se envió un formulario para cambiar el valor de la variable booleana
-
-                # Cambiar el valor de la variable booleana utilizando un switch (toggle)
-                mi_variable_booleana = not mi_variable_booleana
-                # Guardar el nuevo valor en la sesión
-                request.session['mi_variable_booleana'] = mi_variable_booleana"""
-
+ 
+    
     
 
 
-    return render(request,'index.html',{'empleado':empleado,'form':form,'asistencia':asistencia,'listadias':listadias,'cant_regis':cant_regis,'array_asistencia':array_asistencia,'events': event_list,'form2':form2,'table_data':table_data,'tabla_asistencia':tabla_asistencia,'anio_actual':anio_actual,'mes_actual':mes_actual,})
-
+    return render(request,'index.html',{'empleado':empleado,'form':form,'asistencia':asistencia,'listadias':listadias,'cant_regis':cant_regis,'array_asistencia':array_asistencia,'events': event_list,'form2':form2,'table_data':table_data,'tabla_asistencia':tabla_asistencia,'anio_actual':anio_actual,'mes_actual':mes_actual,'mi_variable_booleana':mi_variable_booleana})
+def cambio_tema(request, **kwargs):
+    if 'is_dark_theme' in request.session:
+        request.session["is_dark_theme"] = not request.session.get('is_dark_theme')
+    else:
+        request.session["is_dark_theme"] = True
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER','/'))
 
 def generar_tabla_asistencia_mes_especifico(mes, anio):
     dias_en_mes = monthrange(anio, mes)[1]

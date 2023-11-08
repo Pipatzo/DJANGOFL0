@@ -59,6 +59,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
     'django.contrib.humanize',
     
 ]
@@ -72,8 +75,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
-
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
 ROOT_URLCONF = 'lh_web_interna.urls'
 
 TEMPLATES = [
@@ -98,7 +106,7 @@ WSGI_APPLICATION = 'lh_web_interna.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-"""DATABASES = {
+DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '192.168.1.88:1521/XE',
@@ -110,9 +118,9 @@ WSGI_APPLICATION = 'lh_web_interna.wsgi.application'
             'TBLSPACE_TMP': 'default_test_tbls_tmp',
         },
         }
-}"""
+}
 
-DATABASES = {
+"""DATABASES = {
    'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': 'ORCL',
@@ -121,7 +129,7 @@ DATABASES = {
         'HOST': 'pipatzo-db.cedocpfxfqhe.eu-north-1.rds.amazonaws.com',
         'PORT': '1521',
         }
-}
+}"""
 
 
 # Password validation
