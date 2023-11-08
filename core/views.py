@@ -275,7 +275,7 @@ def buscarasistencia(request):
                 week_data.append((calendar.day_name[calendar.weekday(year, mes, day)], day))
         table_data.append(week_data)
 
-    return render(request, 'asistencia/buscarasistencia.html', {'tabla_asistencia': tabla_asistencia, 'anio_actual': anio,'table_data':table_data,'mes':mes,})
+    return render(request, 'Asistencia/buscarasistencia.html', {'tabla_asistencia': tabla_asistencia, 'anio_actual': anio,'table_data':table_data,'mes':mes,})
 
 
 #DASHBOARD
@@ -287,7 +287,7 @@ def dashboard(request):
     monto_total = monto_cargo - monto_retiro
     
  
-    return render(request,'dashboards/dashboard.html',{'monto_total':monto_total,})
+    return render(request,'Dashboards/dashboard.html',{'monto_total':monto_total,})
 #PROVEEDOR
 @login_required
 def proveedor(request):
@@ -306,7 +306,7 @@ def proveedor(request):
     else:
         form = ProveedorForms()
     proveedores = Proveedor.objects.all()
-    return render(request,'proveedores/proveedor.html',{'proveedores':proveedores,'form':form,})
+    return render(request,'Proveedores/proveedor.html',{'proveedores':proveedores,'form':form,})
 
 #FINANZAS
 @login_required
@@ -326,7 +326,7 @@ def finanza(request):
 
     else:
         form = TransaccionForms()
-    return render(request,'finanzas/finanza.html',{'trans':trans,'form':form,})
+    return render(request,'Finanzas/finanza.html',{'trans':trans,'form':form,})
 
 
 
@@ -337,7 +337,7 @@ from django.urls import reverse_lazy
 #Empleado
 class EmpleadoDetailView(generic.DetailView):
     model = Empleado
-    template_name = 'empleados/empleado_detail.html'
+    template_name = 'Empleados/empleado_detail.html'
     context_object_name = 'empleado'
     
 
@@ -352,7 +352,7 @@ class EmpleadoCreate(CreateView):
 
 class EmpleadoUpdate(UpdateView):
     model = Empleado
-    template_name = 'empleados/empleado_mod.html'
+    template_name = 'Empleados/empleado_mod.html'
     context_object_name = 'empleado'
     form_class = EmpleadoForms
     success_url = reverse_lazy('inicio')
@@ -368,7 +368,7 @@ class EmpleadoUpdate(UpdateView):
 
 class EmpleadoDelete(DeleteView):
     model = Empleado
-    template_name = 'empleados/empleado_confirm_delete.html'
+    template_name = 'Empleados/empleado_confirm_delete.html'
     success_url = reverse_lazy('inicio')
     context_object_name = 'empleado'
     
@@ -387,13 +387,13 @@ class CustomLoginView(LoginView):
 #Proveedor
 class ProveedorDetailView(generic.DetailView):
     model = Proveedor
-    template_name = 'proveedores/proveedor_detail.html'
+    template_name = 'Proveedores/proveedor_detail.html'
     context_object_name = 'proveedor'
 
     
 class ProveedorUpdate(UpdateView):
     model = Proveedor
-    template_name = 'proveedores/proveedor_mod.html'
+    template_name = 'Proveedores/proveedor_mod.html'
     context_object_name = 'proveedor'
     form_class = ProveedorForms
     success_url = reverse_lazy('proveedor')
@@ -404,7 +404,7 @@ class ProveedorUpdate(UpdateView):
     
 class ProveedorDelete(DeleteView):
     model = Proveedor
-    template_name = 'proveedores/proveedor_confirm_delete.html'
+    template_name = 'Proveedores/proveedor_confirm_delete.html'
     success_url = reverse_lazy('proveedor')
     context_object_name = 'proveedor'
     
